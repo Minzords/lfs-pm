@@ -1,0 +1,44 @@
+#!/usr/bin/python3
+
+# Import External Library
+import sys
+from pathlib import Path
+import urllib.request as ul
+import os
+import subprocess as sp
+
+# Class for text colors
+class bcolors:
+	HEADER = '\033[95m'
+	OKBLUE = '\033[94m'
+	OKGREEN = '\033[92m'
+	WARNING = '\033[93m'
+	FAIL = '\033[91m'
+	ENDC = '\033[0m'
+	BOLD = '\033[1m'
+	UNDERLINE = '\033[4m'
+
+# Check if the user have the root permission
+user = os.getenv("SUDO_USER")
+if user is None:
+    print (bcolors.FAIL+"This program need root"+bcolors.ENDC)
+    exit()
+
+# If doesnt have 1 argument 
+if len(sys.argv) < 2:
+	print("Please specify task") 
+	exit()
+	
+# Help
+if "help" == sys.argv[1] or "-h" in sys.argv:
+	print(bcolors.HEADER+bcolors.BOLD+"Usage : lfs-pm <commands> <option>"+bcolors.ENDC)
+	print(bcolors.BOLD+"Commandes:"+bcolors.ENDC)
+	print(bcolors.WARNING+"	sync	"+bcolors.ENDC+"Update Database.")
+	print(bcolors.WARNING+"	install	"+bcolors.ENDC+"Install packages.")
+	print(bcolors.WARNING+"	show	"+bcolors.ENDC+"Display information of package.")
+	print(bcolors.WARNING+"	list	"+bcolors.ENDC+"List of all available package.")
+	print(bcolors.WARNING+"	search	"+bcolors.ENDC+"Search packages.")
+	print(bcolors.WARNING+"	upgrade	"+bcolors.ENDC+"Update all package outdate.")
+	print(bcolors.BOLD+"Arguments:"+bcolors.ENDC)
+	print(bcolors.WARNING+"	-h	"+bcolors.ENDC+"View Help.")
+	exit()
