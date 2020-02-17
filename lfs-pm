@@ -2,10 +2,7 @@
 
 # Import External Library
 import sys
-from pathlib import Path
-import urllib.request as ul
 import os
-import subprocess as sp
 
 # Class for text colors
 class bcolors:
